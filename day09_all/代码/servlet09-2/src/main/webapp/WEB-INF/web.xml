@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <listener>
+    <listener-class>listener.MyServletContextListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>listener.MyRequestListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>listener.MySessionListener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>encode</param-name>
+    <param-value>utf-8</param-value>
+  </context-param>
+  <servlet>
+    <description></description>
+    <display-name>CountServlet</display-name>
+    <servlet-name>CountServlet</servlet-name>
+    <servlet-class>web.CountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CountServlet</servlet-name>
+    <url-pattern>/count</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TestServlet</display-name>
+    <servlet-name>TestServlet</servlet-name>
+    <servlet-class>web.TestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>
+</web-app>

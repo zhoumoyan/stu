@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>day09</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>今天的任务：</h1>
+<p>实现添加用户、列出用户、删除用户等功能，必须登录之后才能操作
+<img src="day09-1.png" /></p>
+<h1>1. 路径问题</h1>
+<h2>1.什么是路径-URL</h2>
+<ol>
+<li>URL：统一资源定位符，用于定位互联网上的一个资源</li>
+<li>
+URL的格式：  协议:// 域名 :端口号 /项目路径 /资源路径
+<ol>
+<li>
+http://localhost:8080/servlet09/user/addUser.jsp
+<ol>
+<li>http:// 		-&gt; 协议</li>
+<li>localhost 	-&gt; 域名，会被自动翻译成ip地址，用来找到一台服务器</li>
+<li>:8080        -&gt; 端口号，找到服务器上一个特定的程序</li>
+<li>
+/servlet09/user/addUser.jsp -&gt; 资源的路径
+<ol>
+<li>/servlet09         -&gt; 项目的路径</li>
+<li>/user/addUser.jsp  -&gt; 项目下的资源的路径</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2>2.html中常见的路径</h2>
+<pre><code>    &lt;form action=&quot;...&quot;&gt;
+    &lt;a href=&quot;...&quot;&gt;
+    &lt;img src=&quot;...&quot;&gt;
+    &lt;link href=&quot;...&quot;&gt;
+    &lt;script src=&quot;...&quot;&gt;
+</code></pre>
+
+<h2>3. 2种路径的写法</h2>
+<h3>1）相对路径</h3>
+<ol>
+<li>从当前文件到目标文件的路径</li>
+<li>
+相对路径的特点：
+<ol>
+<li>以当前文件为出发点，不同文件访问同一个文件的路径是不同的</li>
+<li>如果当前文件的位置发生变化，相对路径也需要发生变化</li>
+</ol>
+</li>
+<li>
+书写格式：
+<ol>
+<li>平级  &quot;css/style.css&quot;</li>
+<li>上级  &quot;../css/style.css&quot;</li>
+<li>没有以 / 直接开头的路径</li>
+</ol>
+</li>
+</ol>
+<h3>2) 绝对路径</h3>
+<ol>
+<li>
+<p>从一个特定位置到目标文件的路径</p>
+<ol>
+<li>在web项目中，这个特定位置就是当前项目的路径</li>
+</ol>
+</li>
+<li>
+<p>写法：</p>
+<ol>
+<li>以 / 开头 &quot;/servlet09/css/style.css&quot;</li>
+</ol>
+</li>
+<li>
+<p>绝对路径的特点：</p>
+<ol>
+<li>路径与当前文件所在的位置 无关</li>
+<li>当前文件所在的位置改变，不影响绝对路径
+<img src="day09-3.png" /></li>
+</ol>
+</li>
+</ol>
+<h2>4. Servlet中写的路径</h2>
+<pre><code>1. 请求转发
+    1. request.getRequestDispatcher(url).forward(req,resp)；
+    2. 该API中传入的url，不需要添加项目映射的路径(context path)
+    3. 原因是，转发仅能够找到当前项目内部的资源
+
+2. 请求重定向
+    1. response.sendRedirect(url);
+    2. 该API中传入的url，必须添加当前项目映射的路径(context path)
+    3. 该路径是供浏览器使用的，目标没有限制
+
+3. 除转发外，有所的绝对路径中必须包含context path
+</code></pre>
+
+<h1>2. 项目改造流程</h1>
+<ol>
+<li>画图确定项目中各组件所在的位置和映射的路径</li>
+<li>在webapp下新建一个user文件夹，将addUser.jsp移至该文件夹下</li>
+<li>
+<p>修改addUser.jsp中的路径，将相对路径改成绝对路径</p>
+<pre><code>1. &lt;link ... href=&quot;...&quot;&gt;
+2. &lt;form  action=&quot;...&quot;&gt;
+</code></pre>
+
+</li>
+<li>
+<p>修改WEB-INF下的listUsers.jsp文件中的路径，将相对路径改成绝对路径</p>
+<pre><code>1. &lt;link ... href=&quot;...&quot;&gt;
+2. &lt;a herf=&quot;...&quot;&gt;删除
+3. &lt;button ... onclick=&quot;...&quot;&gt;
+</code></pre>
+
+</li>
+<li>修改web.xml文件，将AddUserServlet，DelUserServlet，ListUserServlet映射的路径前添加 /user</li>
+<li>
+修改AddUserServlet，DelUserServlet，ListUserServlet中的代码，将相对路径改成绝对路径
+<ol>
+<li>请求转发的路径中不需要添加context path</li>
+<li>请求重定向的路径中必须添加context path</li>
+</ol>
+</li>
+<li>
+<p>总和测试当前项目，如遇到404</p>
+<ol>
+<li>打开浏览器开发者工具，查看出现404的请求的路径</li>
+<li>与正确的路径进行比对，锁定问题出现的位置，修改对应的代码</li>
+</ol>
+</li>
+<li>
+<p>开发LoginFilter，拦截 /user/*，在doFilter()中添加拦截的逻辑</p>
+<ol>
+<li>查看Session中是否有用户的登录状态</li>
+<li>如有，则放行</li>
+<li>如没有，则重定向到登录页面</li>
+</ol>
+</li>
+<li>在LoginServlet中添加登录成功的逻辑，向Session中存入登录标识</li>
+<li>验证过滤器是否可以正常生效</li>
+</ol>
+<h1>3. ServletContext: Servlet上下文</h1>
+<ol>
+<li>当服务器启动后，会逐个加载配置的Web项目，每加载完一个Web项目，会马上创建一个ServletContext对象，唯一代表该Web项目</li>
+</ol>
+<h2>1. 基本功能</h2>
+<h3>1）在整个项目内部实现数据共享</h3>
+<p>API：
+		1. 获取ServletContext
+			ServletContext sc=getServletContext();</p>
+<pre><code>    2. 存值/取值
+        sc.setAttribute(String name,Object value);
+        sc.getAttribute(String name);
+        sc.removeAttribute(String name);
+</code></pre>
+
+<p><img src="day09-6.png" /></p>
+<h4>1）对比request,Session,ServletContext</h4>
+<pre><code>1. ServletContext只有一个，不适合保存多个用户不同的变量，因为会彼此覆盖
+2. Session可以跨请求保存一个用户的会话状态
+3. request可以在一次请求内部实现数据共享
+4. 遇到共享数据的需求时，如何考虑？
+    1. 该数据是大家用同一个，还是每个人不同的？同一个-ServletContext
+    2. 该数据是否要跨请求共享？ 跨请求 - Session
+</code></pre>
+
+<h3>2）读取web.xml中配置的初始化参数</h3>
+<pre><code>1. 可以在web.xml中配置一个项目通用的初始化参数
+    &lt;context-param&gt;
+        &lt;param-name&gt;encode&lt;/param-name&gt;
+        &lt;param-value&gt;utf-8&lt;/param-value&gt;
+    &lt;/context-param&gt;
+
+2. 可以通过ServletContext对象，直接获取该初始化参数
+
+    String value=sc.getInitParameter(String name);
+
+3. 优势：
+    1. 不论Servlet还是Filter,还是JSP，都可以直接访问相同的ServletContext,进而获取 该初始化参数的值
+    2. 只需要配置一次，就可以实现整个项目的共享
+</code></pre>
+
+<h2>2. ServletContext的生命周期(了解)</h2>
+<ol>
+<li>创建：服务器启动后，加载完一个项目，就创建一个ServletContext</li>
+<li>活多久：和当前项目活的一样久</li>
+<li>销毁：服务器关闭或当前项目被移出容器，ServletContext会被销毁</li>
+</ol>
+<h2>3. Context-&gt;上下文</h2>
+<p>ServletContext -&gt; Servlet的上下文 -&gt; 指的就是服务器(Tomcat) -&gt; 进一步的就是当前Servlet所在的那个项目</p>
+<h1>4. Listener 监听器</h1>
+<p>指Sun公司提供的JavaEE的监听器，可以监听Web项目在运行中的各种具体事件，执行开发者指定的处理逻辑</p>
+<p><img src="day09-4.png" /></p>
+<h2>1. 可以监听的事件</h2>
+<pre><code>1. 特殊对象的创建和销毁
+    1. Request对象
+    2. Session对象
+    3. ServletContext对象
+
+2. 特殊对象中存入了值、修改值、删除值
+    1. Request对象
+    2. Session对象
+    3. ServletContext对象
+
+3. 其他
+</code></pre>
+
+<h2>2. 如何开发一个监听器</h2>
+<pre><code>1. 自定义一个监听器的类，实现对应的监听器接口
+2. 实现其中定义的抽象方法，提供具体事件的处理逻辑
+3. 在web.xml中进行配置
+</code></pre>
+
+<h2>3. 什么时候使用监听器？</h2>
+<pre><code>1. JavaEE的很多组件，其创建和销毁有自己的生命周期，不由开发者控制
+2. 开发者有时需要在一个特定的事件发生后，指定自定义的逻辑
+3. 由于很多类都不是开发者提供的，开发者无法在类中添加自己的代码
+4. JavaEE提供了对应的监听器，监听具体的事件，开发者可以提供监听器的实现类，添加具体事件的处理逻辑
+5. 由服务器保证，一旦事件发生，开发者添加的处理逻辑可以被执行
+</code></pre>
+
+<h1>复习</h1>
+<ol>
+<li>
+<p>Session</p>
+<ol>
+<li>将会话状态保存在服务器的技术</li>
+<li>
+为什么需要会话状态管理？
+<ol>
+<li>在无状态协议（http）下实现会话状态的保存</li>
+</ol>
+</li>
+<li>
+原理？
+<ol>
+<li>服务器创建一个Session对象，保存用户的会话状态</li>
+<li>将Session的ID以Cookie的形式发送给用户，JSESSIONID</li>
+<li>用户在后续的请求中，会自动携带JSESSIONID的Cookie</li>
+<li>服务器使用JSESSIONID的Cookie，查找用户对应的Session对象</li>
+</ol>
+</li>
+<li>
+<p>API
+	HttpSession session=request.getSession(boolean flag);
+	true:有则使用，无则创建
+	false:有责使用，无则返回null
+	request.getSession(); // 与传入true一样的</p>
+<pre><code>session.setAttribute(String name,Object value);
+session.getAttribute(String name);
+session.removeAttribute(String name);
+
+session.getId(); //
+</code></pre>
+
+</li>
+<li>
+<p>Session的销毁</p>
+<ol>
+<li>
+超时：
+<ol>
+<li>默认是30分钟，从用户最后一次访问开始算</li>
+<li>
+可以手动设置超时时间
+&lt;session-config&gt;
+	&lt;session-timeout&gt;15
+</li>
+</ol>
+</li>
+<li>
+自杀:马上销毁当前Session
+	session.invalidate();
+</li>
+<li>
+Session的钝化和活化
+<ol>
+<li>服务器正常关闭时，未超时的Session会被序列化到服务器的硬盘上保存（钝化）</li>
+<li>服务器启动后，钝化的Session会被反序列化到服务器的内存中（活化）</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>Session和Cookie的区别</p>
+<ol>
+<li>Cookie....浏览器</li>
+<li>Session...服务器</li>
+<li>Cookie适合保存需要长期保存，且对安全性和稳定性要求不高的数据</li>
+<li>Session适合保存时间短，对安全性和稳定性要求较高的数据</li>
+</ol>
+</li>
+<li>
+<p>Session和request在共享数据上的区别</p>
+<ol>
+<li>一次请求内部共享数据：request</li>
+<li>跨请求共享数据：session</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>Filter</p>
+<ol>
+<li>
+Sun公司提供的JavaEE的特殊组件，可以拦截用户的请求，实现特定的功能
+<ol>
+<li>例如访问权限控制，敏感词过滤，压缩响应内容</li>
+</ol>
+</li>
+<li>
+<p>如何开发一个Filter？</p>
+<ol>
+<li>开发一个类，实现javax.servlet.Filter接口</li>
+<li>
+实现接口中定义的所有抽象方法
+<ol>
+<li>init(FilterConfig fConfig)</li>
+<li>doFilter(request,response,chain)</li>
+<li>destory()</li>
+</ol>
+</li>
+<li>
+在web.xml中配置
+<ol>
+<li>
+&lt;url-pattern&gt;指定的是当前Filter拦截的url
+<ol>
+<li>具体的：  /img.jpg , /login</li>
+<li>/* ：  /*  ， /user/*</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>Filter的生命周期：</p>
+<ol>
+<li>创建：服务器启动时，加载并实例化所有配置的Filter</li>
+<li>初始化：实例化之后，马上调用Filter的init()方法</li>
+<li>
+就绪：每当Filter生效，都会执行一次doFilter()方法
+	// 请求经过过滤器时执行的逻辑
+	...
+	chain.doFilter()：放行本次请求
+	// 响应经过过滤器时执行的逻辑
+	...
+</li>
+<li>销毁：当服务器关闭或者当前应用被移出容器时，Filter销毁，销毁前调用一次destory()方法</li>
+</ol>
+</li>
+</ol>
+<p>4.FilterConfig
+	1. 代表了一个Filter在web.xml中配置的初始化参数
+	2. 由服务器创建，读取web.xml中的参数，存入该对象中
+	3. 服务器在调用一个Fitler的init()方法时，会将config对象传入
+	4. config.getInitParameter(String name);</p>
+</li>
+</ol>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
